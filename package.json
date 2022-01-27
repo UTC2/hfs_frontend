@@ -1,10 +1,9 @@
 {
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "node_modules/.bin/eslint src/ --fix src/ --fix",
@@ -39,7 +38,9 @@
     "react-native-web": "0.17.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "expo-splash-screen": "~0.14.1",
+    "expo-status-bar": "~1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -59,7 +60,8 @@
     "lint-staged": "^10.2.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "@babel/core": "^7.12.9"
   },
   "prettier": {
     "trailingComma": "all",
@@ -85,5 +87,7 @@
       "yarn lint",
       "yarn test"
     ]
-  }
+  },
+  "name": "hfs_frontend",
+  "version": "1.0.0"
 }
