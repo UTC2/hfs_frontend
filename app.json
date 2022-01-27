@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-boilerplate",
-    "slug": "react-native-boilerplate",
+    "name": "hfs_app",
+    "slug": "hfs_app",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
