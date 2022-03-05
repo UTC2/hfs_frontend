@@ -20,7 +20,6 @@ const DrawerMenuContainer = (props) => {
     </DrawerContentScrollView>
   )
 }
-
 export default () => (
   <Drawer.Navigator initialRouteName="Home" drawerContent={DrawerMenuContainer}>
     <Drawer.Screen name="Home" component={TabNavigator} />

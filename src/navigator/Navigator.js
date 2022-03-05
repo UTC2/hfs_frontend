@@ -3,8 +3,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Text } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { authenticate } from 'slices/app.slice'
-
 import DrawerNavigator from './Drawer'
+
+// const Stack = createStackNavigator()
 
 const Navigator = () => {
   const { checked, loggedIn } = useSelector((state) => state.app)
@@ -25,5 +26,4 @@ const Navigator = () => {
     <Text>Loading...</Text>
   )
 }
-
 export default Navigator

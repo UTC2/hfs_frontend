@@ -1,7 +1,8 @@
 import { Asset } from 'expo-asset'
+import logosm from '../../assets/images/logo-sm.png'
 
 const images = {
-  logo_sm: require('../../assets/images/logo-sm.png'),
+  logo_sm: logosm,
   logo_lg: require('../../assets/images/logo-lg.png'),
 }
 

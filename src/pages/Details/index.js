@@ -1,3 +1,3 @@
-import Details from './Details'
+import DetailScreen from './Details'
 
-export default Details
+export default DetailScreen

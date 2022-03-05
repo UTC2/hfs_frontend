@@ -1,0 +1,31 @@
+{
+  "cSpell.words": ["Pressable"],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3355,
+      "driver": "MySQL",
+      "name": "hfs",
+      "database": "hfs_database",
+      "username": "hfs_user",
+      "password": "hfs_password"
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "60.251.157.46",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "60.251.157.46",
+      "database": "hfs_database",
+      "username": "hfs_user",
+      "password": "hfs_password"
+    }
+  ]
+}

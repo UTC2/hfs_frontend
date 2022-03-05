@@ -12,6 +12,7 @@ module.exports = (api) => {
             theme: './src/theme',
             utils: './src/utils',
             slices: './src/slices',
+            assets: './assets',
           },
         },
       ],

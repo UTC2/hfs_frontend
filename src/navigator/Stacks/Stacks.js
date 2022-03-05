@@ -1,12 +1,13 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { colors } from 'theme'
-import Home from 'pages/Home'
-import Profile from 'pages/Profile'
-import Details from 'pages/Details'
+import DetailScreen from '../../pages/Details'
+// eslint-disable-next-line import/no-unresolved
+import HomeScreen from '../../pages/Home/Home'
+import Profile from '../../pages/Profile'
 import HeaderLeft from './HeaderLeft'
 import HeaderTitle from './HeaderTitle'
-
+import MessageScreen from '../../pages/Message/index'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -31,7 +32,7 @@ export const HomeNavigator = () => (
   >
     <Stack.Screen
       name="Home"
-      component={Home}
+      component={HomeScreen}
       options={({ navigation }) => ({
         title: 'Home',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
@@ -39,10 +40,19 @@ export const HomeNavigator = () => (
       })}
     />
     <Stack.Screen
-      name="Details"
-      component={Details}
+      name="DetailScreen"
+      component={DetailScreen}
       options={({ navigation }) => ({
-        title: 'Home',
+        title: 'MessageScreen',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+    <Stack.Screen
+      name="MessageScreen"
+      component={MessageScreen}
+      options={({ navigation }) => ({
+        title: 'MessageScreen',
         headerLeft: () => <HeaderLeft navigation={navigation} />,
         headerTitle: () => <HeaderTitle />,
       })}
@@ -66,10 +76,48 @@ export const ProfileNavigator = () => (
       })}
     />
     <Stack.Screen
-      name="Details"
-      component={Details}
+      name="DetailScreen"
+      component={DetailScreen}
       options={{
         title: 'Details',
+      }}
+    />
+    <Stack.Screen
+      name="MessageScreen"
+      component={MessageScreen}
+      options={{
+        title: 'MessageScreen',
+      }}
+    />
+  </Stack.Navigator>
+)
+export const MessageNavigator = () => (
+  <Stack.Navigator
+    initialRouteName="MessageScreen"
+    headerMode="screen"
+    screenOptions={navigationProps}
+  >
+    <Stack.Screen
+      name="MessageScreen"
+      component={MessageScreen}
+      options={({ navigation }) => ({
+        title: 'MessageScreen',
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerTitle: () => <HeaderTitle />,
+      })}
+    />
+    <Stack.Screen
+      name="DetailScreen"
+      component={DetailScreen}
+      options={{
+        title: 'DetailScreen',
+      }}
+    />
+    <Stack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+        title: 'Home',
       }}
     />
   </Stack.Navigator>

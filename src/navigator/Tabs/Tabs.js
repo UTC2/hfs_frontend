@@ -3,9 +3,9 @@ import { View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import { colors } from 'theme'
-
 // stack navigators
-import { HomeNavigator, ProfileNavigator } from '../Stacks'
+// eslint-disable-next-line import/no-duplicates
+import { HomeNavigator, ProfileNavigator, MessageNavigator } from '../Stacks'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,6 +33,24 @@ const TabNavigator = () => (
                 solid
               />
             )
+          case 'Message':
+            return (
+              <FontIcon
+                name="comments"
+                color={focused ? colors.lightPurple : colors.gray}
+                size={20}
+                solid
+              />
+            )
+          case 'Search':
+            return (
+              <FontIcon
+                name="search"
+                color={focused ? colors.lightPurple : colors.gray}
+                size={20}
+                solid
+              />
+            )
           default:
             return <View />
         }
@@ -42,8 +60,8 @@ const TabNavigator = () => (
       activeTintColor: colors.lightPurple,
       inactiveTintColor: colors.gray,
       style: {
-        // backgroundColor: 'white',
-        // borderTopColor: 'gray',
+        // backgroundColor: colors.lightPurple,
+        // borderTopColor: colors.gray,
         // borderTopWidth: 1,
         // paddingBottom: 5,
         // paddingTop: 5,
@@ -53,6 +71,8 @@ const TabNavigator = () => (
     swipeEnabled={false}
   >
     <Tab.Screen name="Home" component={HomeNavigator} />
+    <Tab.Screen name="Search" component={HomeNavigator} />
+    <Tab.Screen name="Message" component={MessageNavigator} />
     <Tab.Screen name="Profile" component={ProfileNavigator} />
   </Tab.Navigator>
 )

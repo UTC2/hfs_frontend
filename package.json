@@ -21,8 +21,11 @@
     "expo-asset": "~8.4.5",
     "expo-cli": "^4.13.0",
     "expo-font": "~10.0.4",
+    "expo-splash-screen": "~0.14.1",
+    "expo-status-bar": "~1.2.0",
     "global": "^4.4.0",
     "jest": "^26.6.3",
+    "jshint": "^2.13.4",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
@@ -38,11 +41,10 @@
     "react-native-web": "0.17.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "redux-logger": "^3.0.6",
-    "expo-splash-screen": "~0.14.1",
-    "expo-status-bar": "~1.2.0"
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.9",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "9.0.1",
@@ -60,8 +62,7 @@
     "lint-staged": "^10.2.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "react-test-renderer": "^16.13.1",
-    "@babel/core": "^7.12.9"
+    "react-test-renderer": "^16.13.1"
   },
   "prettier": {
     "trailingComma": "all",
