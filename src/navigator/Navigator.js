@@ -12,7 +12,7 @@ const Navigator = () => {
 
   useEffect(() => {
     dispatch(authenticate({ loggedIn: true, checked: true }))
-  }, [])
+  }, [dispatch])
 
   // TODO: switch router by loggedIn state
   console.log('[##] loggedIn', loggedIn)
