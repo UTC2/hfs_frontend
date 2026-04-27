@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hfs_app",
-    "slug": "hfs_app",
+    "name": "HFS — Student Housing",
+    "slug": "hfs-student-housing",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
@@ -17,14 +17,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "io.github.danghoangnhan.hfs"
     },
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": ["js", "jsx", "svg", "ts", "tsx"]
     },
     "android": {
-      "package": "com.hfs"
+      "package": "io.github.danghoangnhan.hfs"
     }
   }
 }
