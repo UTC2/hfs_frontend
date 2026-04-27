@@ -4,11 +4,10 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
-import appReducer from 'slices/app.slice'
+import authReducer from 'slices/auth.slice'
 
 const rootReducer = combineReducers({
-  app: appReducer,
-  // add more reducers
+  auth: authReducer,
 })
 
 const defaultMiddleware = getDefaultMiddleware({

@@ -1,29 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { Text } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { authenticate } from 'slices/app.slice'
-
 import DrawerNavigator from './Drawer'
 
-const Navigator = () => {
-  const { checked, loggedIn } = useSelector((state) => state.app)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(authenticate({ loggedIn: true, checked: true }))
-  }, [dispatch])
-
-  // TODO: switch router by loggedIn state
-  console.log('[##] loggedIn', loggedIn)
-
-  return checked ? (
-    <NavigationContainer>
-      <DrawerNavigator />
-    </NavigationContainer>
-  ) : (
-    <Text>Loading...</Text>
-  )
-}
+// Phase 4.9 will gate this on auth.status (Login/Register vs Drawer).
+// Kept minimal here so the slice rename in Phase 4.5 builds cleanly.
+const Navigator = () => (
+  <NavigationContainer>
+    <DrawerNavigator />
+  </NavigationContainer>
+)
 
 export default Navigator
