@@ -153,15 +153,32 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            def storeFilePath = System.getenv("HFS_RELEASE_STORE_FILE")
+            def storePass     = System.getenv("HFS_RELEASE_STORE_PASSWORD")
+            def alias         = System.getenv("HFS_RELEASE_KEY_ALIAS")
+            def keyPass       = System.getenv("HFS_RELEASE_KEY_PASSWORD")
+            if (storeFilePath && storePass && alias && keyPass) {
+                storeFile     file(storeFilePath)
+                storePassword storePass
+                keyAlias      alias
+                keyPassword   keyPass
+            } else {
+                // Placeholder: assembleRelease will fail loudly with a missing-keystore
+                // error rather than silently signing release builds with the debug key.
+                storeFile file("release.keystore.placeholder")
+                storePassword ""
+                keyAlias ""
+                keyPassword ""
+            }
+        }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
