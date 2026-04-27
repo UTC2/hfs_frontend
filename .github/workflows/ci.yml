@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  js:
+    name: Lint + Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
+
+      - name: expo-doctor
+        run: npx expo-doctor
+        continue-on-error: true
+
+  android:
+    name: Android assembleDebug
+    needs: js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*', 'android/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: assembleDebug
+        run: ./gradlew :app:assembleDebug --no-daemon
+        working-directory: android
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
