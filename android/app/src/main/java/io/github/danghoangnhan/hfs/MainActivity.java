@@ -1,4 +1,4 @@
-package com.hfsapp;
+package io.github.danghoangnhan.hfs;
 
 import android.os.Build;
 import android.os.Bundle;

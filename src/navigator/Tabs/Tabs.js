@@ -12,6 +12,15 @@ const Tab = createBottomTabNavigator()
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
+      tabBarActiveTintColor: colors.lightPurple,
+      tabBarInactiveTintColor: colors.gray,
+      tabBarStyle: {
+        // backgroundColor: 'white',
+        // borderTopColor: 'gray',
+        // borderTopWidth: 1,
+        // paddingBottom: 5,
+        // paddingTop: 5,
+      },
       // eslint-disable-next-line react/prop-types
       tabBarIcon: ({ focused }) => {
         switch (route.name) {
@@ -38,19 +47,7 @@ const TabNavigator = () => (
         }
       },
     })}
-    tabBarOptions={{
-      activeTintColor: colors.lightPurple,
-      inactiveTintColor: colors.gray,
-      style: {
-        // backgroundColor: 'white',
-        // borderTopColor: 'gray',
-        // borderTopWidth: 1,
-        // paddingBottom: 5,
-        // paddingTop: 5,
-      },
-    }}
     initialRouteName="Home"
-    swipeEnabled={false}
   >
     <Tab.Screen name="Home" component={HomeNavigator} />
     <Tab.Screen name="Profile" component={ProfileNavigator} />

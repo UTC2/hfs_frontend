@@ -24,11 +24,7 @@ const navigationProps = {
 // ------------------------------------
 
 export const HomeNavigator = () => (
-  <Stack.Navigator
-    initialRouteName="Home"
-    headerMode="screen"
-    screenOptions={navigationProps}
-  >
+  <Stack.Navigator initialRouteName="Home" screenOptions={navigationProps}>
     <Stack.Screen
       name="Home"
       component={Home}
@@ -51,11 +47,7 @@ export const HomeNavigator = () => (
 )
 
 export const ProfileNavigator = () => (
-  <Stack.Navigator
-    initialRouteName="Profile"
-    headerMode="screen"
-    screenOptions={navigationProps}
-  >
+  <Stack.Navigator initialRouteName="Profile" screenOptions={navigationProps}>
     <Stack.Screen
       name="Profile"
       component={Profile}
