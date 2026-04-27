@@ -1,28 +1,40 @@
 import React, { useEffect } from 'react'
+import { ActivityIndicator, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { Text } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { authenticate } from 'slices/app.slice'
+import { bootstrap } from 'slices/auth.slice'
 
 import DrawerNavigator from './Drawer'
+import AuthStack from './AuthStack'
+
+const styles = {
+  spinner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}
 
 const Navigator = () => {
-  const { checked, loggedIn } = useSelector((state) => state.app)
   const dispatch = useDispatch()
+  const { status, bootstrapped } = useSelector((s) => s.auth)
 
   useEffect(() => {
-    dispatch(authenticate({ loggedIn: true, checked: true }))
+    dispatch(bootstrap())
   }, [dispatch])
 
-  // TODO: switch router by loggedIn state
-  console.log('[##] loggedIn', loggedIn)
+  if (!bootstrapped) {
+    return (
+      <View style={styles.spinner}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  }
 
-  return checked ? (
+  return (
     <NavigationContainer>
-      <DrawerNavigator />
+      {status === 'authed' ? <DrawerNavigator /> : <AuthStack />}
     </NavigationContainer>
-  ) : (
-    <Text>Loading...</Text>
   )
 }
 
