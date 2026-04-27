@@ -12,14 +12,21 @@ import Navigator from './navigator'
 const App = () => {
   const [didLoad, setDidLoad] = useState(false)
 
-  // assets preloading
-  const handleLoadAssets = async () => {
-    await Promise.all([...imageAssets, ...fontAssets])
-    setDidLoad(true)
-  }
-
   useEffect(() => {
+    let cancelled = false
+    const handleLoadAssets = async () => {
+      try {
+        await Promise.all([...imageAssets, ...fontAssets])
+      } catch (err) {
+        // Don't hang the UI on a missing/corrupt asset; log and continue.
+        console.warn('Asset preload failed; continuing with fallbacks.', err)
+      }
+      if (!cancelled) setDidLoad(true)
+    }
     handleLoadAssets()
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   return didLoad ? (
