@@ -1,4 +1,4 @@
-package com.hfsapp;
+package io.github.danghoangnhan.hfs;
 
 import android.app.Application;
 import android.content.Context;
