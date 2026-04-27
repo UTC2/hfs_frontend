@@ -72,4 +72,5 @@ buck-out/
 web-build/
 dist/
 
-# @end expo-cli.sdk-upgrade-target
+# SDK upgrade scratch
+.sdk-upgrade-target
