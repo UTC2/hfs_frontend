@@ -84,6 +84,6 @@
       "yarn test"
     ]
   },
-  "name": "hfs_frontend",
+  "name": "hfs-student-housing",
   "version": "1.0.0"
 }
