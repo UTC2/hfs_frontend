@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { View, SafeAreaView, Text } from 'react-native'
 
 import { DrawerActions } from '@react-navigation/native'
-import FontIcon from 'react-native-vector-icons/FontAwesome5'
+import FontIcon from '@expo/vector-icons/FontAwesome5'
 import { colors } from 'theme'
 
 const styles = {
